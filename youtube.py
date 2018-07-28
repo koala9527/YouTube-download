@@ -45,6 +45,7 @@ def getdownloadurl(url,headers):
 def download(url):
     try:
         ydl_opts = {}
+        #内置库方法
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
 
@@ -53,9 +54,11 @@ def download(url):
 
 if __name__=="__main__":
     list1=[]
+    #YouTube上李永乐老师的播放列表地址
     url = 'https://www.youtube.com/channel/UCSs4A6HYKmHA2MG_0z-F0xw/playlists'
+    #获取所有的播放列表的地址
     for i in getlisturl(url, headers):
-
+    #获取播放列表地址的列表里面播放视频的链接
         list1+=getdownloadurl(i,headers)
     list1=list(set(list1))
     print(list1)
